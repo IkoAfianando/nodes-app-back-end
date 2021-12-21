@@ -101,7 +101,24 @@ const editNoteByIdHandler = (request, h) => {
 const deleteNoteByIdHandler = (request, h) => {
     const {id} = request.params;
 
-    const inddex = notes.findIndex()
+    const index = notes.findIndex((note) => note.id === id);
+
+    if(index !== -1) {
+        notes.splice(index, 1) ;
+        const response = h.response({
+            status: 'Succes',
+            message: "Catatan berhasil dihapus",
+        });
+        response.code(200);
+        return response;
+    }
+
+    const response =  h.response({
+        status: 'fail',
+        message: 'Catatan gagal dihapus'
+    });
+    response.code(404);
+    return response;
 }
 
-module.exports = { addNoteHandler, getAllNotesHandler, getNodeByIdHandler, editNoteByIdHandler };
+module.exports = { addNoteHandler, getAllNotesHandler, getNodeByIdHandler, editNoteByIdHandler, deleteNoteByIdHandler };
