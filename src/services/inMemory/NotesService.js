@@ -32,7 +32,7 @@ class notesService {
   getNoteBydId(id) {
       const note = this._notes.filter((n) => n.id === id)[0];
       if(!note){
-          throw new Error('Catatan gagal ditambahkan');
+          throw new Error('Catatan tidak ditemukan');
       }
       return note;
   }
