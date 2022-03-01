@@ -13,8 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.2.1",
+    "dotenv": "^16.0.0",
     "joi": "^17.6.0",
-    "nanoid": "^3.1.30"
+    "migrate": "^1.7.0",
+    "nanoid": "^3.1.30",
+    "node-pg": "^1.0.1",
+    "pg": "^8.7.3"
   },
   "devDependencies": {
     "eslint": "^8.5.0",
