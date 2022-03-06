@@ -22,8 +22,8 @@ const init = async () => {
     options: {
       service: notesService,
       validator: NotesValidator,
-    }
-  })
+    },
+  });
 
   await server.start();
   console.log(`Server is running on port ${server.info.uri}`);

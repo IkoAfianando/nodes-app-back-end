@@ -1,5 +1,10 @@
+/* eslint-disable no-unused-vars */
 const {
-  postNoteHandler, getNotesHandler, getNoteByIdHandler, putNoteByIdHandler, deleteNoteByIdHandler,
+  postNoteHandler,
+  getNotesHandler,
+  getNoteByIdHandler,
+  putNoteByIdHandler,
+  deleteNoteByIdHandler,
 } = require('./handler');
 
 const routes = (handler) => [
@@ -27,7 +32,6 @@ const routes = (handler) => [
     method: 'DELETE',
     path: '/notes/{id}',
     handler: handler.deleteNoteByIdHandler,
-
   },
 ];
 
