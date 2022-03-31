@@ -16,7 +16,7 @@ class UsersService {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const query = {
-      text: 'INSERT INTO users VALUES($1, $2, $3, $4) RETURNING $id',
+      text: 'INSERT INTO users VALUES($1, $2, $3, $4) RETURNING id',
       values: [id, username, hashedPassword, fullname],
     };
 
@@ -38,21 +38,22 @@ class UsersService {
     const result = await this._pool.query(query);
 
     if (result.rowCount > 0) {
-      throw new InvariantError('Gagal menambahkan users, Username sudah digunakan.');
+      throw new InvariantError('Gagal menambahkan user. Username sudah digunakan.');
     }
   }
 
   async getUserById(userId) {
-    const query = ({
+    const query = {
       text: 'SELECT id, username, fullname FROM users WHERE id = $1',
       values: [userId],
-    });
+    };
 
     // eslint-disable-next-line no-underscore-dangle
     const result = await this._pool.query(query);
     if (!result.rowCount) {
       throw new NotFoundError('User tidak ditemukan');
     }
+    return result.rows[0];
   }
 }
 

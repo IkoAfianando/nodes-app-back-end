@@ -1,4 +1,6 @@
 const ClientError = require('../../exceptions/ClientError');
+// eslint-disable-next-line no-unused-vars
+const InvariantError = require('../../exceptions/InvariantError');
 
 class UserHandler {
   constructor(service, validator) {
@@ -23,7 +25,7 @@ class UserHandler {
 
       const response = h.response({
         status: 'success',
-        message: 'user berhasil ditambahkan',
+        message: 'User berhasil ditambahkan',
         data: {
           userId,
         },
